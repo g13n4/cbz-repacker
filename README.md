@@ -11,14 +11,14 @@ A simple utility for aggregation and consolidation cbz files in one
 
 ---
 
-| Flag                  | Type     | Default Value               | Description                                                                                 |
-|:----------------------|:---------|:----------------------------|:--------------------------------------------------------------------------------------------|
-| `-input`              | `string` | `.`                         | Target directory where the source `.cbz` files are located.                                 |
-| `-output`             | `string` | `.`                         | Target directory where your new repacked `.cbz` volumes will be generated.                  |
-| `-size`               | `int`    | `7`                         | Maximum number of chapters to compress inside a single combined `.cbz` archive.             |
-| `-pattern`            | `string` | `[Cc]hapter[_\-\s\t]*(\d+)` | Regex rule used to find and extract the chapter integer identifier.                         |
-| `-ignore_not_matched` | `bool`   | `false`                     | If set to `true`, suppresses console warnings for files that don't match the regex pattern. |
-| `-ignore_order_check` | `bool`   | `false`                     | If set to `true`, suppresses error on missing or repeating files.                           |
+| Flag        | Type     | Default Value               | Description                                                                                 |
+|:------------|:---------|:----------------------------|:--------------------------------------------------------------------------------------------|
+| `-input`    | `string` | `.`                         | Target directory where the source `.cbz` files are located.                                 |
+| `-output`   | `string` | `.`                         | Target directory where your new repacked `.cbz` volumes will be generated.                  |
+| `-size`     | `int`    | `7`                         | Maximum number of chapters to compress inside a single combined `.cbz` archive.             |
+| `-pattern`  | `string` | `[Cc]hapter[_\-\s\t]*(\d+)` | Regex rule used to find and extract the chapter integer identifier.                         |
+| `-imatch`   | `bool`   | `false`                     | If set to `true`, suppresses console warnings for files that don't match the regex pattern. |
+| `-imissing` | `bool`   | `false`                     | If set to `true`, suppresses error on missing or repeating files.                           |
 
 ---
 

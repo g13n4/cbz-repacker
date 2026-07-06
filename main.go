@@ -16,8 +16,8 @@ func main() {
 	defaultMatchPattern = `[Cc]hapter[_\-\s\t]*(\d+)`
 	defaultFolder = "."
 
-	ignoreCheck := flag.Bool("ignore_order_check", false, "ignore missing or repeating cbz file error")
-	ignoreNotMatched := flag.Bool("ignore_not_matched", false, "ignore not matched cbz files")
+	ignoreCheck := flag.Bool("imissing", false, "ignore missing or repeating cbz file error")
+	ignoreNotMatched := flag.Bool("imatch", false, "ignore cbz files that are not matched by regex")
 	matchPattern = flag.String("pattern", defaultMatchPattern, "change default pattern is to be used to identify chapter number")
 	workingFolder = flag.String("input", defaultFolder, "change default folder to where cbz files are located")
 	outputFolder = flag.String("output", defaultOutputFolder, "change default folder to where repacked cbz files will be created")
