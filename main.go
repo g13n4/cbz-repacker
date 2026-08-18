@@ -9,18 +9,20 @@ import (
 )
 
 func main() {
-	var workingFolder, outputFolder, matchPattern *string
-	var defaultFolder, defaultOutputFolder, defaultMatchPattern string
+	var workingFolder, outputFolder, matchPattern, repackPrefix *string
+	var defaultFolder, defaultOutputFolder, defaultMatchPattern, defaultRepackPrefix string
 	var repackedCBZSize *int
 
 	defaultMatchPattern = `[Cc]hapter[_\-\s\t]*(\d+)`
 	defaultFolder = "."
+	defaultRepackPrefix = ""
 
 	ignoreCheck := flag.Bool("imissing", false, "ignore missing or repeating cbz file error")
 	ignoreNotMatched := flag.Bool("imatch", false, "ignore cbz files that are not matched by regex")
-	matchPattern = flag.String("pattern", defaultMatchPattern, "change default pattern is to be used to identify chapter number")
+	matchPattern = flag.String("reg", defaultMatchPattern, "change default regex pattern is to be used to identify chapter number")
 	workingFolder = flag.String("input", defaultFolder, "change default folder to where cbz files are located")
 	outputFolder = flag.String("output", defaultOutputFolder, "change default folder to where repacked cbz files will be created")
+	repackPrefix = flag.String("prefix", defaultRepackPrefix, "set prefix for every repacked cbz file")
 	repackedCBZSize = flag.Int("size", 7, "change amount of chapters in one repacked cbz")
 
 	flag.Parse()
@@ -42,7 +44,7 @@ func main() {
 		panic(fmt.Sprintf("can't find absolute path for directory %s:\n%+v", setFolderAbsolute, err))
 	}
 
-	agg := NewAggregator(absoluteOutputFolder, *repackedCBZSize)
+	agg := NewAggregator(absoluteOutputFolder, *repackPrefix, *repackedCBZSize)
 
 	notMatchedCounter := 0
 	for chapter := range cbzChan {
